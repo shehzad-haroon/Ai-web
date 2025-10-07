@@ -247,8 +247,13 @@ function Home() {
           </div>
         </div>
       </section>
+     
 
+  {/* ...existing code... */}
+  {/* Customer Carousel Section */}
+  <CustomerCarousel />
 
+<<<<<<< HEAD
       {/* Features Grid Section */}
      
 
@@ -257,6 +262,9 @@ function Home() {
       <CustomerCarousel />
 
       {/* Features Section - moved below carousel */}
+=======
+  {/* Features Section - moved below carousel */}
+>>>>>>> 6b18aae51be124e489f2865cddae218298ca3a11
       <section className="features-section" style={{marginTop: '56px'}}>
         <h2 className="features-title" style={{
           textAlign: 'center',
@@ -336,20 +344,25 @@ function Home() {
 
 
   {/* Pricing Section */}
+<<<<<<< HEAD
+
+
+
+=======
+>>>>>>> 6b18aae51be124e489f2865cddae218298ca3a11
 
 
 
 
 
-
-      {/* Customer Carousel Section */}
-      <CustomerCarousel />
-
-        
-
+<<<<<<< HEAD
     
 
       {/* FAQ Section - Accordion */}
+=======
+
+  {/* FAQ Section - Accordion */}
+>>>>>>> 6b18aae51be124e489f2865cddae218298ca3a11
       <section className="faq-section-modern">
         <h2 className="faq-title-modern">Frequently Asked Questions</h2>
         <div className="faq-list-modern">
