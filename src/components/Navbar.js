@@ -85,8 +85,6 @@ function Navbar() {
         </div>
         {/* Mobile menu overlay */}
         <div className={`navbar-mobile-menu${mobileMenuOpen ? ' open' : ''}`}>
-          {/* Close button for mobile menu */}
-          <button className="navbar-mobile-close" onClick={() => setMobileMenuOpen(false)} aria-label="Close menu" style={{position: 'absolute', top: 18, right: 18, background: 'none', border: 'none', fontSize: '2.2rem', color: '#fff', cursor: 'pointer', zIndex: 1001}}>&times;</button>
           <ul>
             <li className="navbar-dropdown">
               <span
