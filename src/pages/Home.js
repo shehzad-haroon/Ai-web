@@ -59,22 +59,139 @@ function CustomerCarousel() {
 }
 
 function Home() {
+  // FAQ accordion state
+  const [openFaq, setOpenFaq] = useState(0);
+  const faqs = [
+    {
+      q: "What is SlickTalk.ai and how does it work?",
+      a: "SlickTalk.ai is an AI voice-automation agency that answers calls, routes requests, books appointments, and follows up—24/7—for any business that relies on the phone. Our conversational agents sound natural, handle FAQs and intake, capture leads, schedule and confirm bookings, and trigger workflows in your existing tools."
+    },
+    {
+      q: "Can I try SlickTalk.ai for free?",
+      a: "Yes! You can try SlickTalk.ai free for 7 days. No credit card required."
+    },
+    {
+      q: "Is SlickTalk.ai easy to set up?",
+      a: "Absolutely. Setup takes just a few minutes and no technical skills are needed."
+    },
+    {
+      q: "Does SlickTalk.ai support multiple languages?",
+      a: "Yes, SlickTalk.ai supports both English and Spanish out of the box."
+    }
+  ];
+
   return (
     <div className="home">
-      {/* Hero Section */}
-      <section className="hero-section">
-        <div className="hero-content">
-          <div className="hero-badge-row">
-            <span className="hero-badge">NEW</span>
-            <span className="hero-badge-text">Unlimited minutes on all plans</span>
+      {/* Hero Section - Inspired by Screenshot */}
+      <section className="hero-section" style={{
+        background: 'linear-gradient(120deg, #f7f3ff 0%, #e9e3ff 100%)',
+        minHeight: '540px',
+        padding: '64px 0 56px 0',
+        borderRadius: '2.5rem',
+        boxShadow: '0 4px 32px rgba(124,58,237,0.10)',
+        position: 'relative',
+        overflow: 'hidden',
+      }}>
+        <div className="hero-content" style={{
+          maxWidth: '1200px',
+          margin: '0 auto',
+          width: '100%',
+          display: 'flex',
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          gap: '56px',
+          position: 'relative',
+          zIndex: 1,
+        }}>
+          {/* Left Side: Text */}
+          <div className="hero-left" style={{ flex: 1.2, minWidth: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center', marginLeft: '32px' }}>
+            <div className="hero-badge-row" style={{ marginBottom: 22, display: 'flex', alignItems: 'center', gap: '12px' }}>
+              <span className="hero-badge" style={{ background: '#f3eaff', color: '#7c3aed', fontWeight: 700, borderRadius: '1rem', padding: '7px 22px', fontSize: '1.08rem', boxShadow: '0 2px 12px #fff2' }}>NEW</span>
+              <span className="hero-badge-text" style={{ color: '#7c3aed', fontWeight: 500, fontSize: '1.08rem', background: '#ede7ff', borderRadius: '1rem', padding: '7px 18px' }}>Unlimited minutes on all plans</span>
+            </div>
+            <h1 className="hero-main-title" style={{
+              fontSize: '2.4rem',
+              fontWeight: 900,
+              lineHeight: 1.08,
+              marginBottom: 20,
+              letterSpacing: '-2px',
+              color: '#2d174d',
+              textShadow: '0 2px 24px #b47aff22',
+              fontFamily: 'Inter, Arial, sans-serif',
+            }}>
+              AI answering service for your<br />business calls
+            </h1>
+            <p className="hero-main-desc" style={{
+              fontSize: '1.08rem',
+              color: '#6c4bb6',
+              marginBottom: 32,
+              fontWeight: 500,
+              lineHeight: 1.5,
+              maxWidth: '520px',
+              textShadow: '0 2px 12px #b47aff11',
+              fontFamily: 'Inter, Arial, sans-serif',
+            }}>
+              SlickTalk.ai is your AI answering service — trained on your business and ready to field calls, answer questions, set appointments, and send you all the details 24/7.
+            </p>
+            <Link to="/booking" className="hero-main-btn" style={{
+              background: 'linear-gradient(90deg, #7c3aed 0%, #b47aff 100%)',
+              color: '#fff',
+              fontWeight: 800,
+              fontSize: '1.08rem',
+              padding: '16px 40px',
+              borderRadius: '2.5rem',
+              boxShadow: '0 4px 32px #b47aff33',
+              textDecoration: 'none',
+              border: 'none',
+              display: 'inline-block',
+              transition: 'transform 0.2s, box-shadow 0.2s',
+              fontFamily: 'Inter, Arial, sans-serif',
+            }}
+              onMouseOver={e => { e.target.style.transform = 'scale(1.04)'; e.target.style.boxShadow = '0 8px 32px #7c3aed44'; }}
+              onMouseOut={e => { e.target.style.transform = 'scale(1)'; e.target.style.boxShadow = '0 4px 32px #b47aff33'; }}
+            >Start Free Trial</Link>
           </div>
-          <h1 className="hero-main-title">AI Voice Automation for Every Business</h1>
-          <p className="hero-main-desc">SlickTalk.ai is an AI voice-automation agency that answers calls, routes requests, books appointments, and follows up—24/7—for any business that relies on the phone. Our conversational agents sound natural, handle FAQs and intake, capture leads, schedule and confirm bookings, and trigger workflows in your existing tools. We design, deploy, and tune voice agents end-to-end (greetings, prompts, hand-offs, analytics) so you never miss a customer and your team gets time back.</p>
-          <Link to="/booking" className="hero-main-btn">Book Now</Link>
-        </div>
-        <div className="hero-image">
-          {/* Placeholder for chat mockup image */}
-          <div className="hero-image-mockup"></div>
+          {/* Right Side: Chat Mockup Card */}
+          <div className="hero-image" style={{ flex: 1, minWidth: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', marginRight: '32px' }}>
+            <div className="hero-image-card" style={{
+              width: '100%',
+              maxWidth: '420px',
+              height: '350px',
+              background: `url('https://images.pexels.com/photos/6153343/pexels-photo-6153343.jpeg') center/cover no-repeat`,
+              borderRadius: '2.2rem',
+              boxShadow: '0 8px 32px #7c3aed33',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'flex-start',
+              justifyContent: 'flex-end',
+              position: 'relative',
+              padding: '36px',
+              gap: '22px',
+              height: '100%',
+              overflow: 'hidden',
+            }}>
+              {/* Soft overlay for readability */}
+              <div style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: '100%',
+                background: 'linear-gradient(135deg, #7c3aed88 0%, #b47aff88 100%)',
+                borderRadius: '2.2rem',
+                zIndex: 0,
+              }}></div>
+              {/* Chat bubbles */}
+              <div style={{ background: '#fff', color: '#7c3aed', borderRadius: '1rem', padding: '18px 26px', fontWeight: 600, fontSize: '1.12rem', boxShadow: '0 2px 16px #b47aff22', marginBottom: '10px', maxWidth: '80%', position: 'relative', zIndex: 1 }}>
+                How can I assist you today?
+              </div>
+              <div style={{ background: '#fff', color: '#2d174d', borderRadius: '1rem', padding: '18px 26px', fontWeight: 600, fontSize: '1.12rem', boxShadow: '0 2px 16px #7c3aed22', marginBottom: '10px', maxWidth: '90%', display: 'flex', alignItems: 'center', gap: '10px', position: 'relative', zIndex: 1 }}>
+                <span>Your meeting is scheduled.<br />Would you like anything else?</span>
+                <img src="https://i.ibb.co/4V2Qw1k/sample-logo3.png" alt="SlickTalk AI" style={{ width: '34px', height: '34px', borderRadius: '50%', boxShadow: '0 2px 12px #7c3aed22', border: '2px solid #fff' }} />
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -133,51 +250,23 @@ function Home() {
 
 
       {/* Features Grid Section */}
-      <section className="features-grid-section">
-  <h2 className="features-grid-title">SlickTalk.ai adapts to your business,<br />whether service-based or brick and mortar.</h2>
-        <div className="features-grid">
-          <div className="feature-card">
-            <span className="feature-icon">{/* SVG user check */}
-              <svg width="32" height="32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16 18c3.314 0 6-2.686 6-6s-2.686-6-6-6-6 2.686-6 6 2.686 6 6 6Zm0 2c-4.418 0-8 2.239-8 5v1a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-1c0-2.761-3.582-5-8-5Zm7-2 2 2 3-3" stroke="#B47AFF" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/></svg>
-            </span>
-            <div>
-              <div className="feature-card-title">Service existing customers</div>
-              <div className="feature-card-desc">SlickTalk.ai answers questions about booking, hours, billing, and more.</div>
-            </div>
-          </div>
-          <div className="feature-card">
-            <span className="feature-icon">{/* SVG phone */}
-              <svg width="32" height="32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22 17c-.6 0-1.2-.1-1.7-.3a1 1 0 0 0-1 .2l-2.2 2.2a15.1 15.1 0 0 1-6.6-6.6l2.2-2.2a1 1 0 0 0 .2-1c-.2-.5-.3-1.1-.3-1.7A1 1 0 0 0 13 7h-4a1 1 0 0 0-1 1c0 8.3 6.7 15 15 15a1 1 0 0 0 1-1v-4a1 1 0 0 0-1-1Z" stroke="#B47AFF" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/></svg>
-            </span>
-            <div>
-              <div className="feature-card-title">Handle incoming leads</div>
-              <div className="feature-card-desc">SlickTalk.ai gives prospects the answers they need, books appointments, and keeps you in the loop.</div>
-            </div>
-          </div>
-          <div className="feature-card">
-            <span className="feature-icon">{/* SVG bell */}
-              <svg width="32" height="32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16 28a4 4 0 0 0 4-4H12a4 4 0 0 0 4 4Zm8-8V14a8 8 0 1 0-16 0v6l-2 2v2h20v-2l-2-2Z" stroke="#B47AFF" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/></svg>
-            </span>
-            <div>
-              <div className="feature-card-title">Minimize in-store disruptions</div>
-              <div className="feature-card-desc">SlickTalk.ai answers FAQs and transfers calls to employees on the floor only when necessary.</div>
-            </div>
-          </div>
-          <div className="feature-card">
-            <span className="feature-icon">{/* SVG filter */}
-              <svg width="32" height="32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 6h24M8 14h16M12 22h8" stroke="#B47AFF" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/></svg>
-            </span>
-            <div>
-              <div className="feature-card-title">Filter out sales calls & spam</div>
-              <div className="feature-card-desc">SlickTalk.ai screens and blocks 1-800s, robocalls, and sales reps, only spending time on important calls.</div>
-            </div>
-          </div>
-        </div>
-      </section>
+     
 
-      {/* Features Section */}
-      <section className="features-section">
-        <h2>Why SlickTalk.ai?</h2>
+      {/* ...existing code... */}
+      {/* Customer Carousel Section */}
+      <CustomerCarousel />
+
+      {/* Features Section - moved below carousel */}
+      <section className="features-section" style={{marginTop: '56px'}}>
+        <h2 className="features-title" style={{
+          textAlign: 'center',
+          fontSize: '2.2rem',
+          fontWeight: 800,
+          color: '#2d174d',
+          marginBottom: '38px',
+          letterSpacing: '-1px',
+          fontFamily: 'Inter, Arial, sans-serif',
+        }}>Why SlickTalk.ai?</h2>
         <div className="features-list">
           <div className="feature-item">
             <h3>24/7 AI Voice Agents</h3>
@@ -194,76 +283,60 @@ function Home() {
         </div>
       </section>
 
-
-  {/* Pricing Section */}
-      <section className="pricing-section">
-        <h2 className="pricing-title">Pricing & Plans</h2>
-        <div className="pricing-grid">
-          {/* Professional */}
-          <div className="pricing-card">
-            <div className="pricing-badge pricing-badge-prof">PROFESSIONAL</div>
-            <div className="pricing-price-row"><span className="pricing-price">$49</span><span className="pricing-per">/month</span></div>
-            <div className="pricing-desc"><b>Perfect for:</b> Small business and solo owners who need SlickTalk.ai to answer calls and qualify leads 24/7.</div>
-            <ul className="pricing-features">
-              <li>Unlimited minutes</li>
-              <li>Message taking with custom questions</li>
-              <li>Smart spam detection</li>
-              <li>Bilingual agent – English + Spanish</li>
-            </ul>
-            <Link to="/booking" className="pricing-btn">Book Now</Link>
+      {/* Hear SlickTalk.ai in Action Section */}
+      <section className="hear-action-section" style={{marginTop: '32px', marginBottom: '32px'}}>
+        <h2 className="hear-action-title" style={{textAlign: 'center', fontSize: '2.2rem', fontWeight: 800, color: '#2d174d', marginBottom: '38px', letterSpacing: '-1px'}}>Hear SlickTalk.ai in Action...</h2>
+        <div className="hear-action-grid" style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '32px', maxWidth: '1200px', margin: '0 auto'}}>
+          {/* Card 1 */}
+          <div className="hear-action-card" style={{background: '#f7eaff', borderRadius: '1.2rem', overflow: 'hidden', boxShadow: '0 2px 16px #b47aff22', display: 'flex', flexDirection: 'column', minHeight: '260px'}}>
+            <img src="https://images.pexels.com/photos/5083215/pexels-photo-5083215.jpeg" alt="Move-out cleaning" style={{width: '100%', height: '120px', objectFit: 'cover'}} />
+            <div style={{padding: '18px 18px 0 18px', fontWeight: 500, color: '#2d174d', fontSize: '1.08rem'}}>Requesting a move-out cleaning service.</div>
+            <div style={{padding: '18px'}}>
+              <audio controls style={{width: '100%'}}>
+                <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mp3" />
+                Your browser does not support the audio element.
+              </audio>
+            </div>
           </div>
-          {/* Scale (Most Popular) */}
-          <div className="pricing-card pricing-card-popular">
-            <div className="pricing-popular-badge">Most Popular</div>
-            <div className="pricing-badge pricing-badge-scale">SCALE</div>
-            <div className="pricing-price-row"><span className="pricing-price">$149</span><span className="pricing-per">/month</span></div>
-            <div className="pricing-desc"><b>Perfect for:</b> Growing businesses that want SlickTalk.ai to answer, route, and book appointments automatically.</div>
-            <ul className="pricing-features">
-              <li>Unlimited minutes</li>
-              <li>Message taking with custom questions</li>
-              <li>Smart spam detection</li>
-              <li>Bilingual agent – English + Spanish</li>
-              <li>Appointment Links</li>
-              <li>Call Transfers</li>
-              <li>Send texts during call</li>
-              <li>Warm Transfers (Coming Soon)</li>
-            </ul>
-            <Link to="/booking" className="pricing-btn">Book Now</Link>
+          {/* Card 2 */}
+          <div className="hear-action-card" style={{background: '#f7eaff', borderRadius: '1.2rem', overflow: 'hidden', boxShadow: '0 2px 16px #b47aff22', display: 'flex', flexDirection: 'column', minHeight: '260px'}}>
+            <img src="https://images.pexels.com/photos/3992879/pexels-photo-3992879.jpeg" alt="Haircut appointment" style={{width: '100%', height: '120px', objectFit: 'cover'}} />
+            <div style={{padding: '18px 18px 0 18px', fontWeight: 500, color: '#2d174d', fontSize: '1.08rem'}}>Scheduling a haircut appointment.</div>
+            <div style={{padding: '18px'}}>
+              <audio controls style={{width: '100%'}}>
+                <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" type="audio/mp3" />
+                Your browser does not support the audio element.
+              </audio>
+            </div>
           </div>
-          {/* Growth */}
-          <div className="pricing-card">
-            <div className="pricing-badge pricing-badge-growth">GROWTH</div>
-            <div className="pricing-price-row"><span className="pricing-price">$299</span><span className="pricing-per">/month</span></div>
-            <div className="pricing-desc"><b>Perfect for:</b> More complex businesses that require additional agent training and custom workflows.</div>
-            <ul className="pricing-features">
-              <li>Unlimited minutes</li>
-              <li>Message taking with custom questions</li>
-              <li>Smart spam detection</li>
-              <li>Bilingual agent – English + Spanish</li>
-              <li>Appointment Links</li>
-              <li>Call Transfers</li>
-              <li>Send texts during call</li>
-              <li>Warm Transfers (Coming Soon)</li>
-              <li>Training Files</li>
-            </ul>
-            <Link to="/booking" className="pricing-btn">Book Now</Link>
+          {/* Card 3 */}
+          <div className="hear-action-card" style={{background: '#f7eaff', borderRadius: '1.2rem', overflow: 'hidden', boxShadow: '0 2px 16px #b47aff22', display: 'flex', flexDirection: 'column', minHeight: '260px'}}>
+            <img src="https://images.pexels.com/photos/261327/pexels-photo-261327.jpeg" alt="Hot tub cleaning" style={{width: '100%', height: '120px', objectFit: 'cover'}} />
+            <div style={{padding: '18px 18px 0 18px', fontWeight: 500, color: '#2d174d', fontSize: '1.08rem'}}>Requesting a hot tub cleaning quote.</div>
+            <div style={{padding: '18px'}}>
+              <audio controls style={{width: '100%'}}>
+                <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3" type="audio/mp3" />
+                Your browser does not support the audio element.
+              </audio>
+            </div>
           </div>
-          {/* Custom */}
-          <div className="pricing-card">
-            <div className="pricing-badge pricing-badge-custom">CUSTOM</div>
-            <div className="pricing-price-row"><span className="pricing-price">Custom Price</span></div>
-            <div className="pricing-desc"><b>Perfect for:</b> Multi-location or enterprise businesses needing advanced voice automation and integrations.</div>
-            <ul className="pricing-features">
-              <li>Multiple locations</li>
-              <li>Multi-unit franchises</li>
-              <li>Fully custom prompt</li>
-              <li>Advanced agent training</li>
-              <li>Dedicated account rep</li>
-            </ul>
-            <Link to="/contact" className="pricing-btn pricing-btn-custom">Contact Us</Link>
+          {/* Card 4 */}
+          <div className="hear-action-card" style={{background: '#f7eaff', borderRadius: '1.2rem', overflow: 'hidden', boxShadow: '0 2px 16px #b47aff22', display: 'flex', flexDirection: 'column', minHeight: '260px'}}>
+            <img src="https://images.pexels.com/photos/669615/pexels-photo-669615.jpeg" alt="HOA Fees Advice" style={{width: '100%', height: '120px', objectFit: 'cover'}} />
+            <div style={{padding: '18px 18px 0 18px', fontWeight: 500, color: '#2d174d', fontSize: '1.08rem'}}>Advice on the best way to pay HOA Fees.</div>
+            <div style={{padding: '18px'}}>
+              <audio controls style={{width: '100%'}}>
+                <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3" type="audio/mp3" />
+                Your browser does not support the audio element.
+              </audio>
+            </div>
           </div>
         </div>
       </section>
+
+
+  {/* Pricing Section */}
+
 
 
 
@@ -274,47 +347,38 @@ function Home() {
 
         
 
-     <section className="faq-section-modern">
-  <h2 className="faq-title-modern">Frequently Asked Questions</h2>
-  <div className="faq-list-modern">
-    <div className="faq-item-modern">
-      <div className="faq-question-modern">
-        <span>What is SlickTalk.ai and how does it work?</span>
-        <span className="faq-icon-modern">+</span>
-      </div>
-      <div className="faq-answer-modern">
-        SlickTalk.ai is an AI voice-automation agency that answers calls, routes requests, books appointments, and follows up—24/7—for any business that relies on the phone. Our conversational agents sound natural, handle FAQs and intake, capture leads, schedule and confirm bookings, and trigger workflows in your existing tools.
-      </div>
-    </div>
-    <div className="faq-item-modern">
-      <div className="faq-question-modern">
-        <span>Can I try SlickTalk.ai for free?</span>
-        <span className="faq-icon-modern">+</span>
-      </div>
-      <div className="faq-answer-modern">
-        Yes! You can try SlickTalk.ai free for 7 days. No credit card required.
-      </div>
-    </div>
-    <div className="faq-item-modern">
-      <div className="faq-question-modern">
-        <span>Is SlickTalk.ai easy to set up?</span>
-        <span className="faq-icon-modern">+</span>
-      </div>
-      <div className="faq-answer-modern">
-        Absolutely. Setup takes just a few minutes and no technical skills are needed.
-      </div>
-    </div>
-    <div className="faq-item-modern">
-      <div className="faq-question-modern">
-        <span>Does SlickTalk.ai support multiple languages?</span>
-        <span className="faq-icon-modern">+</span>
-      </div>
-      <div className="faq-answer-modern">
-        Yes, SlickTalk.ai supports both English and Spanish out of the box.
-      </div>
-    </div>
-  </div>
-</section>
+    
+
+      {/* FAQ Section - Accordion */}
+      <section className="faq-section-modern">
+        <h2 className="faq-title-modern">Frequently Asked Questions</h2>
+        <div className="faq-list-modern">
+          {faqs.map((item, i) => (
+            <div className="faq-item-modern" key={i}>
+              <button
+                className="faq-question-modern"
+                onClick={() => setOpenFaq(openFaq === i ? -1 : i)}
+                aria-expanded={openFaq === i}
+                style={{ background: 'none', border: 'none', width: '100%', textAlign: 'left', padding: '24px 0', fontSize: '1.18rem', fontWeight: 600, color: '#2d174d', display: 'flex', justifyContent: 'space-between', alignItems: 'center', cursor: 'pointer' }}
+              >
+                <span>{item.q}</span>
+                <span className="faq-icon-modern" style={{ fontSize: '1.5rem', color: '#b97aff' }}>
+                  {openFaq === i ? (
+                    <svg width="24" height="24"><path d="M6 15l6-6 6 6" stroke="#2d174d" strokeWidth="2" fill="none" strokeLinecap="round"/></svg>
+                  ) : (
+                    <svg width="24" height="24"><path d="M6 9l6 6 6-6" stroke="#2d174d" strokeWidth="2" fill="none" strokeLinecap="round"/></svg>
+                  )}
+                </span>
+              </button>
+              {openFaq === i && (
+                <div className="faq-answer-modern" style={{ marginTop: '12px', color: '#5b4a7a', fontSize: '1rem', fontWeight: 400, paddingBottom: '18px' }}>
+                  {item.a}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      </section>
 
       {/* Calendly Booking Section Above Footer - Homepage Styled */}
       <section className="calendly-home-section" style={{ background: '#f7f3ff', padding: '56px 0 64px 0', marginTop: '56px', borderRadius: '2rem', boxShadow: '0 2px 16px rgba(124,58,237,0.08)' }}>
