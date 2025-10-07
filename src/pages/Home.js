@@ -247,16 +247,13 @@ function Home() {
           </div>
         </div>
       </section>
-
-
-      {/* Features Grid Section */}
      
 
-      {/* ...existing code... */}
-      {/* Customer Carousel Section */}
-      <CustomerCarousel />
+  {/* ...existing code... */}
+  {/* Customer Carousel Section */}
+  <CustomerCarousel />
 
-      {/* Features Section - moved below carousel */}
+  {/* Features Section - moved below carousel */}
       <section className="features-section" style={{marginTop: '56px'}}>
         <h2 className="features-title" style={{
           textAlign: 'center',
@@ -342,14 +339,7 @@ function Home() {
 
 
 
-      {/* Customer Carousel Section */}
-      <CustomerCarousel />
-
-        
-
-    
-
-      {/* FAQ Section - Accordion */}
+  {/* FAQ Section - Accordion */}
       <section className="faq-section-modern">
         <h2 className="faq-title-modern">Frequently Asked Questions</h2>
         <div className="faq-list-modern">
